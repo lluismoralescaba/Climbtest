@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test de autoevaluación para escalada">
+    <meta name="theme-color" content="#2c5282">
+    <title>ClimbTest - Evaluación de Escalada</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>🧗 ClimbTest</h1>
+            <p class="subtitle">Test de Autoevaluación en Escalada</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="test">📝 Nuevo Test</button>
+            <button class="tab-btn" data-tab="results">📊 Resultados</button>
+            <button class="tab-btn" data-tab="history">📈 Histórico</button>
+        </nav>
+
+        <!-- TAB: NUEVO TEST -->
+        <section id="tab-test" class="tab-content active">
+            <div class="container">
+                <div class="instructions">
+                    <h2>Instrucciones</h2>
+                    <p>Responde a cada pregunta según tus experiencias más recientes en la roca. Puntúa cada pregunta de 0 a 5:</p>
+                    <ul class="scale-legend">
+                        <li><strong>0</strong> = Casi siempre</li>
+                        <li><strong>1</strong> = A menudo</li>
+                        <li><strong>2</strong> = Más o menos la mitad de las veces</li>
+                        <li><strong>3</strong> = De vez en cuando</li>
+                        <li><strong>4</strong> = Raramente</li>
+                        <li><strong>5</strong> = Nunca</li>
+                    </ul>
+                </div>
+
+                <form id="testForm">
+                    <div class="questions-container">
+                        <!-- Las preguntas se generarán dinámicamente -->
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Calcular Resultados</button>
+                        <button type="button" class="btn-secondary" id="resetBtn">Limpiar Formulario</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAB: RESULTADOS -->
+        <section id="tab-results" class="tab-content">
+            <div class="container">
+                <div id="currentResults">
+                    <p class="no-data">Completa el test para ver tus resultados</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: HISTÓRICO -->
+        <section id="tab-history" class="tab-content">
+            <div class="container">
+                <div class="history-controls">
+                    <button id="exportBtn" class="btn-secondary">📥 Exportar Datos</button>
+                    <button id="clearHistoryBtn" class="btn-danger">🗑️ Borrar Histórico</button>
+                </div>
+                <div id="historyContainer">
+                    <p class="no-data">No hay datos históricos disponibles</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Error al registrar SW:', err));
+            });
+        }
+    </script>
+</body>
+</html>

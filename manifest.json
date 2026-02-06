@@ -1,8 +1,10 @@
 {
   "name": "ClimbTest - Evaluación de Escalada",
   "short_name": "ClimbTest",
-  "description": "Test de autoevaluación para escaladores - Seguimiento de tu progreso en mental, técnica y físico",
-  "start_url": "/Climbtest",
+  "description": "Test de autoevaluación para escaladores",
+  "start_url": "/Climbtest/",
+  "scope": "/Climbtest/",
+  "id": "/Climbtest/",
   "display": "standalone",
   "background_color": "#f7fafc",
   "theme_color": "#2c5282",
